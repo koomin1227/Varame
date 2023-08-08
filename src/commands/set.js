@@ -1,11 +1,10 @@
 const fs = require("fs");
-const path = require('path');
-const config_path = path.join(__dirname, '../../config/config.json');
-const name_format = ["snake", "camel"];
+const file = require('../utils/file');
+
 function set(cmd) {
-    if (!isConfigFilePresent())
+    if (!file.isConfigFilePresent())
         makeConfig();
-    let config = JSON.parse(fs.readFileSync(config_path).toString());
+    let config = JSON.parse(fs.readFileSync(file.config_path).toString());
     try{
         setConfig(config, cmd.number, cmd.Format, cmd.key);
         saveConfig(config);
@@ -33,28 +32,25 @@ function setNumber(config, number){
 }
 
 function setFormat(config, Format){
-    if (name_format.indexOf(Format.toLowerCase()) !== -1){
-        config.format = Format;
+    if (file.name_format.indexOf(Format.toLowerCase()) !== -1){
+        config.Format = Format;
     }else{
         throw new Error("<Format> Invalid format");
     }
 }
 
-function isConfigFilePresent(){
-    return fs.existsSync(config_path);
-}
-
 function makeConfig() {
     let config = {};
     config.number = "";
-    config.format = "";
+    config.Format = "";
     config.key = "";
     saveConfig(config);
 }
 
 function saveConfig(config) {
-    fs.writeFileSync(config_path, JSON.stringify(config, null, 2));
+    fs.writeFileSync(file.config_path, JSON.stringify(config, null, 2));
 }
+
 
 module.exports = {
     set

@@ -1,17 +1,8 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
 const set = require('./commands/set');
+const config = require("./commands/config");
 const program = new Command();
-function test() {
-    console.log('test');
-}
-
-// function set(cmd) {
-//     console.log(cmd.number);
-//     console.log(cmd.format);
-//     console.log(cmd.key);
-// }
-
 function varame(input, cmd) {
     console.log(input);
     console.log(cmd.variable);
@@ -21,7 +12,7 @@ program
     .version('0.0.1')
     .command('config')
     .description('check configuration')
-    .action(test);
+    .action(config.config);
 program
     .command('set')
     .description('set configuration')
