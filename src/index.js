@@ -2,11 +2,12 @@
 const { Command } = require('commander');
 const set = require('./commands/set');
 const config = require("./commands/config");
+const varame = require("./commands/varame");
 const program = new Command();
-function varame(input, cmd) {
-    console.log(input);
-    console.log(cmd.variable);
-}
+// function varame(input, cmd) {
+//     console.log(input);
+//     console.log(cmd.variable);
+// }
 
 program
     .version('0.0.1')
@@ -24,5 +25,5 @@ program
     .option('-v, --variable', 'Variable Mode',false)
     .option('-f, --function', 'Function Mode',false)
     .arguments('<input>')
-    .action(varame);
+    .action(varame.varame);
 program.parse();
