@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
+const set = require('./commands/set');
 const program = new Command();
 function test() {
     console.log('test');
 }
 
-function set(cmd) {
-    console.log(cmd.number);
-    console.log(cmd.format);
-    console.log(cmd.key);
-}
+// function set(cmd) {
+//     console.log(cmd.number);
+//     console.log(cmd.format);
+//     console.log(cmd.key);
+// }
 
 function varame(input, cmd) {
     console.log(input);
@@ -25,9 +26,9 @@ program
     .command('set')
     .description('set configuration')
     .option('-n, --number <number>', 'Number of recommendations',false)
-    .option('-f, --format <format>', 'name format',false)
+    .option('-F, --Format <format>', 'name format',false)
     .option('-k, --key <key>', 'GPT APT-Key',false)
-    .action(set);
+    .action(set.set);
 program
     .option('-v, --variable', 'Variable Mode',false)
     .option('-f, --function', 'Function Mode',false)
