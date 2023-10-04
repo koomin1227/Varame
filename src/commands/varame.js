@@ -25,7 +25,7 @@ function makePrompt(input, cmd, number, Format){
 function findTarget(variable, func) {
     let target = "";
     if (variable === false && func === false) {
-        target = "변수이름, 함수이름";
+        target = "변수이름, 함수이름, 커밋메시지";
     }else{
         if (variable !== false){
             target += "변수이름, ";
