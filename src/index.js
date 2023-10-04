@@ -4,10 +4,6 @@ const set = require('./commands/set');
 const config = require("./commands/config");
 const varame = require("./commands/varame");
 const program = new Command();
-// function varame(input, cmd) {
-//     console.log(input);
-//     console.log(cmd.variable);
-// }
 
 program
     .version('0.0.1')
